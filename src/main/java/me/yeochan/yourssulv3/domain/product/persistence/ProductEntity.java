@@ -2,12 +2,14 @@ package me.yeochan.yourssulv3.domain.product.persistence;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product")
+@Getter
 @AllArgsConstructor
 public class ProductEntity {
     @Id

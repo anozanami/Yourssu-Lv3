@@ -3,6 +3,7 @@ package me.yeochan.yourssulv3.domain.product.application;
 import lombok.RequiredArgsConstructor;
 import me.yeochan.yourssulv3.domain.product.application.dto.ProductCreateRequest;
 import me.yeochan.yourssulv3.domain.product.business.ProductService;
+import me.yeochan.yourssulv3.domain.product.business.dto.ProductCreateCommand;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +25,10 @@ public class ProductController {
             @RequestPart("request") ProductCreateRequest productCreateRequest,
             @RequestPart("image") List<MultipartFile> images
     ) {
+        ProductCreateCommand command = productCreateRequest.toCommand();
         Long id = productService.createProduct(
-                productCreateRequest.title(),
-                productCreateRequest.description(),
-                productCreateRequest.introduction()
+                command,
+                images
         );
 
         return ResponseEntity.created(URI.create("/api/v1/product")).body(id);
