@@ -1,9 +1,8 @@
 package me.yeochan.yourssulv3.domain.product.sub.image.implement;
 
 import lombok.RequiredArgsConstructor;
+import me.yeochan.yourssulv3.domain.image.ImageEntity;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
-import me.yeochan.yourssulv3.domain.product.persistence.ProductEntity;
-import me.yeochan.yourssulv3.domain.product.sub.image.persistence.ImageEntity;
 import me.yeochan.yourssulv3.domain.product.sub.image.persistence.ImageRepository;
 import me.yeochan.yourssulv3.domain.product.sub.image.persistence.ImageStorage;
 import org.springframework.stereotype.Component;
@@ -17,6 +16,6 @@ public class ImageUploader {
 
     public void upload(Product product, MultipartFile file) {
         String url = imageStorage.upload(file);
-        imageRepository.save(new ImageEntity(url, ProductEntity.of(product)));
+        imageRepository.save(new ImageEntity(url));
     }
 }
