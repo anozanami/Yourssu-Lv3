@@ -4,8 +4,6 @@ import me.yeochan.yourssulv3.domain.product.persistence.ProductEntity;
 import me.yeochan.yourssulv3.domain.product.persistence.ProductRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class ProductCreator {
 

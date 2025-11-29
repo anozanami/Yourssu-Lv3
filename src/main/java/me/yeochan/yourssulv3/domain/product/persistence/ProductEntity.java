@@ -1,12 +1,14 @@
 package me.yeochan.yourssulv3.domain.product.persistence;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product")
+@AllArgsConstructor
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +36,17 @@ public class ProductEntity {
     }
 
     public ProductEntity() {
+    }
+
+    public static ProductEntity of(Product product) {
+        return new ProductEntity(
+                product.getId(),
+                product.getTitle(),
+                product.getIntroduction(),
+                product.getDescription(),
+                product.getBookMarkCount(),
+                product.getCreatedAt()
+        );
     }
 
     public static Product toDomain(ProductEntity entity) {
