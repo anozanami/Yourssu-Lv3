@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -13,7 +12,6 @@ public class Product {
     private String title;
     private String introduction;
     private String description;
-    private List<String> imageUrls;
-    private int bookMark;
+    private int bookMarkCount;
     private LocalDateTime createdAt;
 }

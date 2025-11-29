@@ -17,7 +17,7 @@ public class ProductCreator {
 
     public Product create(String title, String introduction, String description) {
         ProductEntity productEntity = new ProductEntity(
-                title, introduction, description, List.of()
+                title, introduction, description
         );
         return ProductEntity.toDomain(this.productRepository.save(productEntity));
     }

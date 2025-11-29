@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -23,19 +22,15 @@ public class ProductEntity {
     private String description;
 
     @Column(nullable = false)
-    private List<String> imageUrls;
-
-    @Column(nullable = false)
-    private int bookMark;
+    private int bookMarkCount;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public ProductEntity(String title, String introduction, String description, List<String> imageUrls) {
+    public ProductEntity(String title, String introduction, String description) {
         this.title = title;
         this.introduction = introduction;
         this.description = description;
-        this.imageUrls = imageUrls;
     }
 
     public ProductEntity() {
@@ -47,8 +42,7 @@ public class ProductEntity {
                 entity.title,
                 entity.introduction,
                 entity.description,
-                entity.imageUrls,
-                entity.bookMark,
+                entity.bookMarkCount,
                 entity.createdAt
         );
     }
