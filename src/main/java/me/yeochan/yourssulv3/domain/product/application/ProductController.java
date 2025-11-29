@@ -5,11 +5,13 @@ import me.yeochan.yourssulv3.domain.product.application.dto.ProductCreateRequest
 import me.yeochan.yourssulv3.domain.product.business.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -19,7 +21,8 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Long> createProduct(
-            @RequestBody ProductCreateRequest productCreateRequest
+            @RequestPart("request") ProductCreateRequest productCreateRequest,
+            @RequestPart("image") List<MultipartFile> images
     ) {
         Long id = productService.createProduct(
                 productCreateRequest.title(),
@@ -28,10 +31,5 @@ public class ProductController {
         );
 
         return ResponseEntity.created(URI.create("/api/v1/product")).body(id);
-    }
-
-    @PostMapping("/image")
-    public ResponseEntity<?> uploadImage() {
-        return ResponseEntity.ok().build();
     }
 }

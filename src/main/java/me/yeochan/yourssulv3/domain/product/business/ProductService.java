@@ -16,7 +16,7 @@ public class ProductService {
             String introduction
     ) {
         Product product = this.productCreator.create(title, description, introduction);
-
+        
         return product.getId();
     }
 }

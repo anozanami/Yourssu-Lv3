@@ -1,19 +1,21 @@
 package me.yeochan.yourssulv3.domain.image.implement;
 
 import lombok.RequiredArgsConstructor;
+import me.yeochan.yourssulv3.domain.image.ContentType;
+import me.yeochan.yourssulv3.domain.image.persistence.ImageEntity;
 import me.yeochan.yourssulv3.infrastructure.stroage.ObjectStorage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
 @RequiredArgsConstructor
-public class ImageCreater {
+public class ImageCreator {
     public final ObjectStorage objectStorage;
 
-    public String upload(MultipartFile file) {
+    public Image upload(MultipartFile file, ContentType contentType, Long contentId) {
         String url = objectStorage.upload(file);
 
-
-        return;
+        ImageEntity image = new ImageEntity(url, contentType, contentId);
+        return ImageEntity.toDomain(image);
     }
 }
