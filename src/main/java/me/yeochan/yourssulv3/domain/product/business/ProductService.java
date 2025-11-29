@@ -1,6 +1,7 @@
 package me.yeochan.yourssulv3.domain.product.business;
 
 import lombok.RequiredArgsConstructor;
+import me.yeochan.yourssulv3.domain.image.implement.ImageCreator;
 import me.yeochan.yourssulv3.domain.product.business.dto.ProductCreateCommand;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
 import me.yeochan.yourssulv3.domain.product.implement.ProductCreator;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductCreator productCreator;
+    private final ImageCreator imageCreator;
 
     public Long createProduct(
             ProductCreateCommand command,
@@ -21,8 +23,7 @@ public class ProductService {
         Product product = this.productCreator.create(
                 command.title(),
                 command.description(),
-                command.introduction(),
-                images);
+                command.introduction());
 
         return product.getId();
     }

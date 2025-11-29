@@ -12,10 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageCreator {
     public final ObjectStorage objectStorage;
 
-    public Image upload(MultipartFile file, ContentType contentType, Long contentId) {
+    public boolean upload(MultipartFile file, ContentType contentType, Long contentId) {
         String url = objectStorage.upload(file);
-
         ImageEntity image = new ImageEntity(url, contentType, contentId);
-        return ImageEntity.toDomain(image);
+        return;
     }
 }

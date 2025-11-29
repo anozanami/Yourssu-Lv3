@@ -35,6 +35,7 @@ public class ImageEntity {
         this.contentId = contentId;
     }
 
+
     public static Image toDomain(ImageEntity entity) {
         return new Image(
                 entity.id,
