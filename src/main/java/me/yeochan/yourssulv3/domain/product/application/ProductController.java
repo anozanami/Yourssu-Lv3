@@ -17,7 +17,7 @@ import java.net.URI;
 public class ProductController {
     private final ProductService productService;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Long> createProduct(
             @RequestBody ProductCreateRequest productCreateRequest
     ) {
@@ -28,5 +28,10 @@ public class ProductController {
         );
 
         return ResponseEntity.created(URI.create("/api/v1/product")).body(id);
+    }
+
+    @PostMapping("/image")
+    public ResponseEntity<?> uploadImage() {
+        return ResponseEntity.ok().build();
     }
 }
