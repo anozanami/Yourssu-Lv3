@@ -6,11 +6,13 @@ import me.yeochan.yourssulv3.domain.product.persistence.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @Component
+@Transactional(readOnly = true)
 public class ProductFinder {
     private final ProductRepository productRepository;
 

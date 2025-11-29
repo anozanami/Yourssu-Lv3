@@ -39,7 +39,8 @@ public class ProductController {
             @PathVariable Integer page
     ) {
         PageRequest pageRequest = PageRequest.of(page, 30, Sort.by("createdAt").descending());
-        List<ProductFindAllResponse> responses = productService.findAll(pageRequest).stream().map(ProductFindAllResponse::from).toList();
+        List<ProductFindAllResponse> responses = productService.findAll(pageRequest).stream()
+                .map(ProductFindAllResponse::from).toList();
         return ResponseEntity.ok(responses);
     }
 }
