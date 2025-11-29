@@ -2,13 +2,13 @@ package me.yeochan.yourssulv3.domain.product.application;
 
 import lombok.RequiredArgsConstructor;
 import me.yeochan.yourssulv3.domain.product.application.dto.ProductCreateRequest;
+import me.yeochan.yourssulv3.domain.product.application.dto.ProductFindAllResponse;
 import me.yeochan.yourssulv3.domain.product.business.ProductService;
 import me.yeochan.yourssulv3.domain.product.business.dto.ProductCreateCommand;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
@@ -32,5 +32,14 @@ public class ProductController {
         );
 
         return ResponseEntity.created(URI.create("/api/v1/product")).body(id);
+    }
+
+    @GetMapping("/all/{page}")
+    public ResponseEntity<List<ProductFindAllResponse>> findAll(
+            @PathVariable Integer page
+    ) {
+        PageRequest pageRequest = PageRequest.of(page, 30, Sort.by("createdAt").descending());
+        List<ProductFindAllResponse> responses = productService.findAll(pageRequest).stream().map(ProductFindAllResponse::from).toList();
+        return ResponseEntity.ok(responses);
     }
 }
