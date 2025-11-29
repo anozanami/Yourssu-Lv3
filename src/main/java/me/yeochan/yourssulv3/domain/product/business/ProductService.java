@@ -25,6 +25,7 @@ public class ProductService {
                 command.description(),
                 command.introduction());
 
+
         return product.getId();
     }
 }
