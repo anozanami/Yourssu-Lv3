@@ -1,7 +1,7 @@
 package me.yeochan.yourssulv3.domain.product.sub.image.implement;
 
 import lombok.RequiredArgsConstructor;
-import me.yeochan.yourssulv3.domain.image.ImageEntity;
+import me.yeochan.yourssulv3.domain.image.persistence.ImageEntity;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
 import me.yeochan.yourssulv3.domain.product.sub.image.persistence.ImageRepository;
 import me.yeochan.yourssulv3.domain.product.sub.image.persistence.ImageStorage;

@@ -9,13 +9,5 @@ public class ImageMapper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ImageEntity imageId;
 
-    @Enumerated(EnumType.STRING)
-    private ContentType contentType;
-
-    @Column(nullable = false)
-    private Long contentId;
 }
