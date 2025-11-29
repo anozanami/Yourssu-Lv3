@@ -3,12 +3,11 @@ package me.yeochan.yourssulv3.domain.user.business;
 import me.yeochan.yourssulv3.domain.user.application.dto.UserRegisterRequest;
 import me.yeochan.yourssulv3.domain.user.implimentation.User;
 import me.yeochan.yourssulv3.domain.user.implimentation.UserCreateHelper;
-
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private UserCreateHelper userCreateHelper;
+    private final UserCreateHelper userCreateHelper;
 
     public UserService(UserCreateHelper userCreateHelper) {
         this.userCreateHelper = userCreateHelper;

@@ -1,9 +1,10 @@
 package me.yeochan.yourssulv3.domain.product.persistence;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import jakarta.persistence.*;
 import me.yeochan.yourssulv3.domain.product.implement.Product;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -11,7 +12,7 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false)
     private String title;
 
@@ -37,7 +38,8 @@ public class ProductEntity {
         this.imageUrls = imageUrls;
     }
 
-    public ProductEntity() {}
+    public ProductEntity() {
+    }
 
     public static Product toDomain(ProductEntity entity) {
         return new Product(

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserCreateHelper {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserCreateHelper(UserRepository userRepository) {
         this.userRepository = userRepository;
