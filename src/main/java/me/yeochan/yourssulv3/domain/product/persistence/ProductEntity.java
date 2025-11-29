@@ -30,6 +30,15 @@ public class ProductEntity {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    public ProductEntity(String title, String introduction, String description, List<String> imageUrls) {
+        this.title = title;
+        this.introduction = introduction;
+        this.description = description;
+        this.imageUrls = imageUrls;
+    }
+
+    public ProductEntity() {}
+
     public static Product toDomain(ProductEntity entity) {
         return new Product(
                 entity.id,

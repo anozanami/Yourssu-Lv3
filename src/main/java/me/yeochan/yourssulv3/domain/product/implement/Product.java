@@ -1,10 +1,12 @@
 package me.yeochan.yourssulv3.domain.product.implement;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
 @AllArgsConstructor
 public class Product {
     private Long id;
